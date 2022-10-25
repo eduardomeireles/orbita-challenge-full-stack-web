@@ -12,11 +12,23 @@ namespace StudentWebPageAPI.Repositories
             _context = context;
         }
 
-        public async Task<List<Student>> GetAll() 
+        public async Task<List<Student>> Get() 
         {
             try
             {
                 return await _context.Students.ToListAsync();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public async Task<Student?> Get(int ra)
+        {
+            try
+            {
+                return await _context.Students.FindAsync(ra);
             }
             catch (Exception e)
             {
@@ -54,7 +66,7 @@ namespace StudentWebPageAPI.Repositories
                 }
                 if (!student.Email.Equals(String.Empty))
                 {
-                    baseStudent.Email = student.Name;
+                    baseStudent.Email = student.Email;
                 }
                 _context.SaveChanges();
 
@@ -65,11 +77,11 @@ namespace StudentWebPageAPI.Repositories
                 throw new Exception(e.Message);
             }
         }
-        public async Task<bool> Delete(Student selected) 
+        public async Task<bool> Delete(int ra) 
         {
             try
             {
-                Student? baseStudent = await _context.Students.FindAsync(selected.RA);
+                Student? baseStudent = await _context.Students.FindAsync(ra);
                 if (baseStudent == null)
                 {
                     return false;
@@ -84,5 +96,7 @@ namespace StudentWebPageAPI.Repositories
                 throw new Exception(e.Message);
             }
         }
+
+
     }
 }
