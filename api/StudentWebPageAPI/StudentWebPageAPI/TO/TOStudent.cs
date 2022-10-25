@@ -1,28 +1,30 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using StudentWebPageAPI.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace StudentWebPageAPI.TO
 {
     public class TOStudent
     {
         [Required]
-        public String Name { get; set; } = String.Empty;
+        public int RA { get; set; }
         [Required]
-        public String Email { get; set; } = String.Empty;
+        public string Name { get; set; } = String.Empty;
         [Required]
-        public String CPF { get; set; } = String.Empty;
+        public string Email { get; set; } = String.Empty;
         [Required]
-        public Int64 RA { get; set; }
+        [StringLength(11, ErrorMessage = "CPF Inválido")]
+        public string CPF { get; set; } = String.Empty;
 
-        //public static EquipamentoDTO DeEntidadeParaDTO(Equipamento equipamento)
-        //{
-        //    return new EquipamentoDTO
-        //    {
-        //        EquipamentoId = equipamento.Id,
-        //        Nome = equipamento.Nome,
-        //        Descricao = equipamento.Descricao,
-        //        CustoDiario = equipamento.CustoDiario
-        //    };
-        //}
 
+        public static TOStudent ConvertTO(Student student)
+        {
+            return new TOStudent
+            {
+                Name = student.Name,
+                CPF = student.CPF,
+                RA = student.RA,
+                Email = student.Email,
+            };
+        }
     }
 }
