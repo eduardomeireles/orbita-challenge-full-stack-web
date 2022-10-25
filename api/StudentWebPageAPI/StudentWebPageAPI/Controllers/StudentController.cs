@@ -1,85 +1,77 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
-
+using StudentWebPageAPI.TO;
+using StudentWebPageAPI.Models;
+using StudentWebPageAPI.Repositories;
+using Microsoft.AspNetCore.Cors;
 
 namespace StudentWebPageAPI.Controllers
 {
-
+    [EnableCors("Free")]
     [Route("api/[controller]")]
     [ApiController]
     public class StudentController : ControllerBase
     {
-        private static List<Models.Student> students = new List<Models.Student>
-        {
-            new Models.Student {
-                Name = "aluno 1",
-                Email = "email@teste.com",
-                CPF = "00000000000",
-                RA = 1
-            },
-            new Models.Student {
-                Name = "aluno 2",
-                Email = "email@teste.com",
-                CPF = "00000000000",
-                RA = 2
-            }
+        private readonly IStudentRepo _IStudentRepo;
 
-        };
-
-        [HttpGet]
-        public async Task<ActionResult<List<Models.Student>>> Get() 
+        public StudentController(IStudentRepo iStudentRepo)
         {
-            return Ok(students);
+            _IStudentRepo = iStudentRepo;
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<List<Models.Student>>> GetById(int id)
+
+        [HttpGet("Get")]
+        public async Task<ActionResult<IEnumerable<TOStudent>>> Get()
         {
-            var student = students.Find(s => s.RA == id);
-            if (student == null) 
+            var students = await _IStudentRepo.Get();
+            return Ok(students.Select(TOStudent.ConvertTO).ToList());
+        }
+
+        [HttpGet("Get/ra")]
+        public async Task<ActionResult<IEnumerable<TOStudent>>> Get(int ra)
+        {
+            var students = await _IStudentRepo.Get(ra);
+            if (students == null) 
             {
-                return BadRequest("Student not found.");
+                return NotFound("Registro de aluno não encontrado.");
             }
-
-            return Ok(student);
-        }
-
-        [HttpPost]
-        public async Task<ActionResult<List<Models.Student>>> Post([FromBody] Models.Student newStudent)
-        {
-            students.Add(newStudent);
             return Ok(students);
         }
 
 
-        [HttpPut]
-        public async Task<ActionResult<List<Models.Student>>> UpdateStudent([FromBody] Models.Student request)
+        [HttpPost("Create")]
+        public async Task<ActionResult<bool>> Post(Student newStudent)
         {
-            var student = students.Find(s => s.RA == request.RA);
-            if (student == null)
+            var student = await _IStudentRepo.Create(newStudent);
+            if (!student)
             {
-                return BadRequest("Student not found.");
+                return NotFound("Registro de aluno não encontrado.");
             }
-
-            student.Name = request.Name;
-            student.Email = request.Email;
-
-            return Ok(student);
+            return Ok(await _IStudentRepo.Create(newStudent));
         }
 
 
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<List<Models.Student>>> Delete(int id)
+        [HttpPut("Update")]
+        public async Task<ActionResult<bool>> Update(Student request)
         {
-            var student = students.Find(s => s.RA == id);
-            if (student == null)
+            var student = await _IStudentRepo.Update(request);
+            if (!student) 
             {
-                return BadRequest("Student not found.");
+                return NotFound("Registro de aluno não encontrado.");
+            }
+            return Ok(await _IStudentRepo.Update(request));
+        }
+
+
+        [HttpDelete("Delete")]
+        public async Task<ActionResult<bool>> Delete(int ra)
+        {
+            var student = await _IStudentRepo.Delete(ra);
+            if (!student) 
+            {
+                return NotFound("Registro de aluno não encontrado.");
             }
 
-            students.Remove(student);
-
-            return Ok(students);
+            return Ok(await _IStudentRepo.Delete(ra));
         }
     }
 }
