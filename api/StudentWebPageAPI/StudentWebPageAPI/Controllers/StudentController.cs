@@ -3,6 +3,8 @@ using StudentWebPageAPI.TO;
 using StudentWebPageAPI.Models;
 using StudentWebPageAPI.Repositories;
 using Microsoft.AspNetCore.Cors;
+using System.Text.Json;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace StudentWebPageAPI.Controllers
 {
@@ -30,35 +32,35 @@ namespace StudentWebPageAPI.Controllers
         public async Task<ActionResult<IEnumerable<TOStudent>>> Get(int ra)
         {
             var students = await _IStudentRepo.Get(ra);
-            if (students == null) 
+            if (students == null)
             {
-                return NotFound("Registro de aluno não encontrado.");
+                return NotFound("Registro de aluno não encontrado123.");
             }
             return Ok(students);
         }
 
 
         [HttpPost("Create")]
-        public async Task<ActionResult<bool>> Post(Student newStudent)
+        public async Task<ActionResult<bool>> Post([FromBody] Student s)
         {
-            var student = await _IStudentRepo.Create(newStudent);
+            var student = await _IStudentRepo.Create(s);
             if (!student)
             {
                 return NotFound("Registro de aluno não encontrado.");
             }
-            return Ok(await _IStudentRepo.Create(newStudent));
+            return Ok(true);
         }
 
 
         [HttpPut("Update")]
-        public async Task<ActionResult<bool>> Update(Student request)
+        public async Task<ActionResult<bool>> Update([FromBody] Student s)
         {
-            var student = await _IStudentRepo.Update(request);
+            var student = await _IStudentRepo.Update(s);
             if (!student) 
             {
                 return NotFound("Registro de aluno não encontrado.");
             }
-            return Ok(await _IStudentRepo.Update(request));
+            return Ok(true);
         }
 
 
@@ -71,7 +73,8 @@ namespace StudentWebPageAPI.Controllers
                 return NotFound("Registro de aluno não encontrado.");
             }
 
-            return Ok(await _IStudentRepo.Delete(ra));
+            return Ok(student);
         }
+
     }
 }

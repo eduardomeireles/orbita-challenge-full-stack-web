@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\desenvhome\\full-stack-web-challenge\\api\\StudentWebPageAPI\\StudentWebPageAPI\\StudentWebPageAPI.csproj": {}
+    "C:\\desenvhome\\orbita-challenge-full-stack-web\\api\\StudentWebPageAPI\\StudentWebPageAPI\\StudentWebPageAPI.csproj": {}
   },
   "projects": {
-    "C:\\desenvhome\\full-stack-web-challenge\\api\\StudentWebPageAPI\\StudentWebPageAPI\\StudentWebPageAPI.csproj": {
+    "C:\\desenvhome\\orbita-challenge-full-stack-web\\api\\StudentWebPageAPI\\StudentWebPageAPI\\StudentWebPageAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\desenvhome\\full-stack-web-challenge\\api\\StudentWebPageAPI\\StudentWebPageAPI\\StudentWebPageAPI.csproj",
+        "projectUniqueName": "C:\\desenvhome\\orbita-challenge-full-stack-web\\api\\StudentWebPageAPI\\StudentWebPageAPI\\StudentWebPageAPI.csproj",
         "projectName": "StudentWebPageAPI",
-        "projectPath": "C:\\desenvhome\\full-stack-web-challenge\\api\\StudentWebPageAPI\\StudentWebPageAPI\\StudentWebPageAPI.csproj",
+        "projectPath": "C:\\desenvhome\\orbita-challenge-full-stack-web\\api\\StudentWebPageAPI\\StudentWebPageAPI\\StudentWebPageAPI.csproj",
         "packagesPath": "C:\\Users\\eduar\\.nuget\\packages\\",
-        "outputPath": "C:\\desenvhome\\full-stack-web-challenge\\api\\StudentWebPageAPI\\StudentWebPageAPI\\obj\\",
+        "outputPath": "C:\\desenvhome\\orbita-challenge-full-stack-web\\api\\StudentWebPageAPI\\StudentWebPageAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\eduar\\AppData\\Roaming\\NuGet\\NuGet.Config",

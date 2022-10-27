@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "B3Y4tfraIlUFibUp9G30TEnRHb9GxR9PIFtFdzcC+9RA1HYOuAvFKT5HOti9DlecjVBVT6yq7aEXHcA7YR7k7Q==",
+  "dgSpecHash": "kK7t8JjidKzJ8blY1T6R1t77TtvmXSZohC8sbKMkpcYc3B3vzC3VjS3JhhHO//v2Ak8DshMAJ5DtBv7vTCsonw==",
   "success": true,
-  "projectFilePath": "C:\\desenvhome\\full-stack-web-challenge\\api\\StudentWebPageAPI\\StudentWebPageAPI\\StudentWebPageAPI.csproj",
+  "projectFilePath": "C:\\desenvhome\\orbita-challenge-full-stack-web\\api\\StudentWebPageAPI\\StudentWebPageAPI\\StudentWebPageAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\eduar\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\eduar\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.10\\microsoft.entityframeworkcore.6.0.10.nupkg.sha512",
