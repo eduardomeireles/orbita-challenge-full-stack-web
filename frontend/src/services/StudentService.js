@@ -4,22 +4,21 @@ class StudentService {
   get() {
     return http.get('/Student/Get');
   }
-  
 
-  create(data) {
-    return http.post('/Create', data);
+  create(student) {
+    return http.post('/Student/Create', student, { headers: { "Content-Type": "application/json" } })
   }
 
-  update(id, data) {
-    return http.put('/Update/${id}', data);
+  update(student) {
+    return http.put('/Student/Update', student, { headers: { "Content-Type": "application/json" } })
   }
 
   delete(ra) {
-    return http.delete("/Student/Delete",  { params: { ra: ra} });
+    return http.delete("/Student/Delete", { params: { ra: ra } });
   }
 
   findByRA(ra) {
-    return http.get('/Student/Get/ra', { params: { ra: ra} });
+    return http.get('/Student/Get/ra', { params: { ra: ra } });
   }
 }
 

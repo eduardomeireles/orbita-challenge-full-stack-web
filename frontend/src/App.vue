@@ -58,7 +58,6 @@
       drawer: null,
         items: [
             { title: 'Alunos', icon: 'mdi-account-school', to: '/' },
-            { title: 'Cadastro de Alunos', icon: 'mdi-account-plus', to: '/create-student' },
           ],
         }),
   }
