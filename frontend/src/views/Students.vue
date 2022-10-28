@@ -2,7 +2,7 @@
   <div class="home pa-3">
     <div>
       <v-data-table :headers="headers" :search="search" :items="students" :hide-default-footer="true" :page.sync="page"
-      :items-per-page="itemsPerPage"  @page-count="pageCount = $event">
+      :items-per-page="itemsPerPage" @page-count="pageCount = $event">
         <template v-slot:top>
           <v-row>
             <v-col cols="6">
@@ -46,10 +46,10 @@ export default {
     return {
       students: [],
       headers: [
-        { text: "Registro Acadêmico", align: "start", sortable: true, value: "ra" },
-        { text: "Nome", value: "name", sortable: true },
-        { text: "CPF", value: "cpf", sortable: false },
-        { text: "Ações", value: "actions", sortable: false },
+        { text: "Registro Acadêmico", align: "center", value: "ra", sortable: true },
+        { text: "Nome", align: "center", value: "name", sortable: true },
+        { text: "CPF", align: "center", value: "cpf", sortable: false },
+        { text: "Ações", align: "center", value: "actions", sortable: false },
       ],
       dialog: false,
       selected: -1,
@@ -64,7 +64,6 @@ export default {
       StudentService.get()
         .then((response) => {
           this.students = response.data.map(this.getDisplayStudent);
-          //console.log(response);
         })
         .catch((e) => {
           console.log(e);
@@ -83,7 +82,6 @@ export default {
     },
     openDeleteDialog(id) {
       this.selected = id;
-      console.log(this.selected);
       this.dialog = true;
     },
     deleteStudent(id) {
@@ -105,7 +103,6 @@ export default {
   },
   mounted() {
     this.get();
-    console.log(this.students);
   },
 }
 </script>

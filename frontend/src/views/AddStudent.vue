@@ -104,10 +104,10 @@ export default {
       }
       else {
         this.student = {
-          ra: '123',
-          name: 'rafael m',
-          email: 'rafael@gmail.com',
-          cpf: '02136969080',
+          ra: '',
+          name: '',
+          email: '',
+          cpf: '',
         }
       }
     },
@@ -137,11 +137,6 @@ export default {
     validate() {
       if (this.$refs.form.validate()) {
         this.save();
-        console.log("passou");
-      }
-      else {
-        //this.resetValidation();
-        console.log("n bombou");
       }
     },
     resetValidation() {
