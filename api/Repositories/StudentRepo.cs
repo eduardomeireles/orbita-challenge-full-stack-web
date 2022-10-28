@@ -93,6 +93,17 @@ namespace StudentWebPageAPI.Repositories
                 {
                     to.IsSuccess = false;
                     to.Message = "Aluno não encontrado.";
+                    return to;
+                }
+                if (!ValidateEmail(student.Email))
+                {
+                    to.IsSuccess = false;
+                    to.Message = "E-mail inválido.";
+                }
+                if (!ValidateName(student.Name))
+                {
+                    to.IsSuccess = false;
+                    to.Message = "Nome incompleto. ";
                 }
                 if (!student.Name.Equals(String.Empty))
                 {

@@ -43,10 +43,6 @@ namespace StudentWebPageAPI.Controllers
         public async Task<ActionResult<bool>> Post([FromBody] Student s)
         {
             TOResponse to = await _IStudentRepo.Create(s);
-            if (!to.IsSuccess)
-            {
-                return Ok(to);
-            }
             return Ok(to);
         }
 
@@ -55,10 +51,6 @@ namespace StudentWebPageAPI.Controllers
         public async Task<ActionResult<TOResponse>> Update([FromBody] Student s)
         {
             TOResponse to = await _IStudentRepo.Update(s);
-            if (!to.IsSuccess) 
-            {
-                return Ok(to);
-            }
             return Ok(to);
         }
 
@@ -67,11 +59,6 @@ namespace StudentWebPageAPI.Controllers
         public async Task<ActionResult<TOResponse>> Delete(int ra)
         {
             TOResponse to = await _IStudentRepo.Delete(ra);
-            if (!to.IsSuccess) 
-            {
-                return Ok(to);
-            }
-
             return Ok(to);
         }
 
