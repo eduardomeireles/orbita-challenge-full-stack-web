@@ -1,5 +1,5 @@
-﻿using Microsoft.Win32;
-using StudentWebPageAPI.Models;
+﻿using StudentWebPageAPI.Models;
+using StudentWebPageAPI.TO;
 
 namespace StudentWebPageAPI.Repositories
 {
@@ -7,9 +7,9 @@ namespace StudentWebPageAPI.Repositories
     {
         Task<List<Student>> Get();
         Task<Student?> Get(int ra);
-        Task<bool> Create(Student newStudent);
-        Task<bool> Update(Student selected);
-        Task<bool> Delete(int ra);
+        Task<TOResponse> Create(Student newStudent);
+        Task<TOResponse> Update(Student selected);
+        Task<TOResponse> Delete(int ra);
 
     }
 }

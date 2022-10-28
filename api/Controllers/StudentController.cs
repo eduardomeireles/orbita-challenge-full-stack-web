@@ -3,8 +3,7 @@ using StudentWebPageAPI.TO;
 using StudentWebPageAPI.Models;
 using StudentWebPageAPI.Repositories;
 using Microsoft.AspNetCore.Cors;
-using System.Text.Json;
-using JsonSerializer = System.Text.Json.JsonSerializer;
+
 
 namespace StudentWebPageAPI.Controllers
 {
@@ -34,7 +33,7 @@ namespace StudentWebPageAPI.Controllers
             var students = await _IStudentRepo.Get(ra);
             if (students == null)
             {
-                return NotFound("Registro de aluno não encontrado123.");
+                return NotFound("Registro de aluno não encontrado.");
             }
             return Ok(students);
         }
@@ -43,37 +42,37 @@ namespace StudentWebPageAPI.Controllers
         [HttpPost("Create")]
         public async Task<ActionResult<bool>> Post([FromBody] Student s)
         {
-            var student = await _IStudentRepo.Create(s);
-            if (!student)
+            TOResponse to = await _IStudentRepo.Create(s);
+            if (!to.IsSuccess)
             {
-                return NotFound("Registro de aluno não encontrado.");
+                return Ok(to);
             }
-            return Ok(true);
+            return Ok(to);
         }
 
 
         [HttpPut("Update")]
-        public async Task<ActionResult<bool>> Update([FromBody] Student s)
+        public async Task<ActionResult<TOResponse>> Update([FromBody] Student s)
         {
-            var student = await _IStudentRepo.Update(s);
-            if (!student) 
+            TOResponse to = await _IStudentRepo.Update(s);
+            if (!to.IsSuccess) 
             {
-                return NotFound("Registro de aluno não encontrado.");
+                return Ok(to);
             }
-            return Ok(true);
+            return Ok(to);
         }
 
 
         [HttpDelete("Delete")]
-        public async Task<ActionResult<bool>> Delete(int ra)
+        public async Task<ActionResult<TOResponse>> Delete(int ra)
         {
-            var student = await _IStudentRepo.Delete(ra);
-            if (!student) 
+            TOResponse to = await _IStudentRepo.Delete(ra);
+            if (!to.IsSuccess) 
             {
-                return NotFound("Registro de aluno não encontrado.");
+                return Ok(to);
             }
 
-            return Ok(student);
+            return Ok(to);
         }
 
     }

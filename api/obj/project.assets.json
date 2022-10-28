@@ -1042,11 +1042,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\desenvhome\\orbita-challenge-full-stack-web\\api\\StudentWebPageAPI\\StudentWebPageAPI\\StudentWebPageAPI.csproj",
+      "projectUniqueName": "C:\\desenvhome\\orbita-challenge-full-stack-web\\api\\StudentWebPageAPI.csproj",
       "projectName": "StudentWebPageAPI",
-      "projectPath": "C:\\desenvhome\\orbita-challenge-full-stack-web\\api\\StudentWebPageAPI\\StudentWebPageAPI\\StudentWebPageAPI.csproj",
+      "projectPath": "C:\\desenvhome\\orbita-challenge-full-stack-web\\api\\StudentWebPageAPI.csproj",
       "packagesPath": "C:\\Users\\eduar\\.nuget\\packages\\",
-      "outputPath": "C:\\desenvhome\\orbita-challenge-full-stack-web\\api\\StudentWebPageAPI\\StudentWebPageAPI\\obj\\",
+      "outputPath": "C:\\desenvhome\\orbita-challenge-full-stack-web\\api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\eduar\\AppData\\Roaming\\NuGet\\NuGet.Config",
